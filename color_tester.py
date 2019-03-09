@@ -7,6 +7,6 @@ px = img1[100,100] #pixel to look at
 print(px)
 cv.imshow('king_dedede', img1) #show image
 cv.waitKey(0) #Wait for keypress: 0
-cv.destroyAllAindows() #Close windows
+cv.destroyAllWindows() #Close windows
 
 print('img1.dtype')
