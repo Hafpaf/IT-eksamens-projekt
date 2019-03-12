@@ -9,7 +9,7 @@ if __name__ == '__main__':
         exit(1) #Exit error code
 
 #Face detection training set
-face_cascade = cv.CascadeClassifier('haarcascade_profileface.xml')
+face_cascade = cv.CascadeClassifier('media/data/haarcascade_profileface.xml')
 
 print("press q to exit") #Refference to "#Display Frame" further down.
 
