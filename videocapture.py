@@ -17,18 +17,19 @@ while True:
     ret, frame = cap.read() #ret: obtain value from source. Frame: get next frame
 
     #Frame proccessing
-    gray = cv.cvtColor(frame, cv.COLOR_BGR2GRAY) #BGR color scheme to GRAY color scheme
+    gray_color = cv.cvtColor(frame, cv.COLOR_BGR2GRAY) #BGR color scheme to GRAY color scheme
 
+    #Detect objects of different sizes
+    face_size = face_cascade.detectMultiScale(gray_color, 1.1, 1)
 
-    face_gray = face_cascade.detectMultiScale(gray, 1.1, 1)
-
-    for (x,y,z,h) in face_gray:
-        cv.rectangle(img,(x,y),(x+w,y+h),(0,0,255),2)
+    #Create rectangle around detected objects
+    for (x,y,w,h) in face_size:
+        cv.rectangle(frame,(x,y),(x+w,y+h),(0,0,255),2)
 
     #Display Frame
     cv.imshow('frame',gray) #Display
     if cv.waitKey(1) & 0xFF == ord('q'): #close by keypress q
         break #exit loop
 
-cap.release()
-cv.destroyAllWindows()
+cap.release() #release capture device
+cv.destroyAllWindows() #Kill window
