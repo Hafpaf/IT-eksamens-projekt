@@ -15,6 +15,8 @@ print("press q to exit")
 while True:
     #Capture frame by frame
     ret, frame = cap.read() #ret: obtain value from source. Frame: get next frame
+    if (type(frame) == type(None)):
+        break
 
     #Frame proccessing
     gray_color = cv.cvtColor(frame, cv.COLOR_BGR2GRAY) #BGR color scheme to GRAY color scheme
