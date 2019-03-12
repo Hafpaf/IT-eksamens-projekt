@@ -32,7 +32,7 @@ while True:
         cv.rectangle(frame,(x,y),(x+w,y+h),(0,0,255),2)
 
     #Display Frame
-    cv.imshow('frame',gray) #Display
+    cv.imshow('cap',frame) #Display
     if cv.waitKey(1) & 0xFF == ord('q'): #close by keypress q
         break #exit loop
 
