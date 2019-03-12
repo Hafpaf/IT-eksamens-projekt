@@ -9,7 +9,7 @@ if __name__ == '__main__':
         exit(1) #Exit error code
 
 #Face detection training set
-face_cascade = cv.CascadeClassifier('/media/data/haarcascade_profileface.xml')
+face_cascade = cv.CascadeClassifier('haarcascade_profileface.xml')
 
 print("press q to exit")
 while True:
@@ -19,6 +19,9 @@ while True:
     #Frame proccessing
     gray_color = cv.cvtColor(frame, cv.COLOR_BGR2GRAY) #BGR color scheme to GRAY color scheme
 
+    ''' Optimization of image proccessing
+    mini = cv.resize(frame, (frame.shape[1] // dst.size(), frame.shape[0] // dst.size()))
+    '''
     #Detect objects of different sizes
     face_size = face_cascade.detectMultiScale(gray_color, 1.1, 1)
 
