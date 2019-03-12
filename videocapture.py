@@ -11,7 +11,8 @@ if __name__ == '__main__':
 #Face detection training set
 face_cascade = cv.CascadeClassifier('haarcascade_profileface.xml')
 
-print("press q to exit")
+print("press q to exit") #Refference to "#Display Frame" further down.
+
 while True:
     #Capture frame by frame
     ret, frame = cap.read() #ret: obtain value from source. Frame: get next frame
@@ -28,8 +29,9 @@ while True:
     face_size = face_cascade.detectMultiScale(gray_color, 1.1, 1)
 
     #Create rectangle around detected objects
-    for (x,y,w,h) in face_size:
+    for (x,y,w,h) in face_size: #x-axis, y-axis, wight, height
         cv.rectangle(frame,(x,y),(x+w,y+h),(0,0,255),2)
+        print("detect at:", x,y)
 
     #Display Frame
     cv.imshow('cap',frame) #Display
