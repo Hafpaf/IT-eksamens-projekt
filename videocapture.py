@@ -31,10 +31,10 @@ while True:
     #Create rectangle around detected objects
     for (x,y,w,h) in face_size: #x-axis, y-axis, wight, height
         cv.rectangle(frame,(x,y),(x+w,y+h),(0,0,255),2)
-        print("detect at:", x,y)
+        print("detection at:", "x:",x,"y:",y)
 
     #Display Frame
-    cv.imshow('cap',frame) #Display
+    cv.imshow('Face reconitization with Harr Cacades training set',frame) #Display
     if cv.waitKey(1) & 0xFF == ord('q'): #close by keypress q
         break #exit loop
 
