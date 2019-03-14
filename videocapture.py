@@ -3,7 +3,7 @@ import cv2 as cv
 print("CV2 version:", cv.__version__)
 
 if __name__ == '__main__':
-    cap = cv.VideoCapture(0) #select capture device, 0 is inbuild
+    cap = cv.VideoCapture('media/david.webm') #select capture device, 0 is inbuild
     if not cap.isOpened():
         print("Can't find capture devide")
         exit(1) #Exit error code
@@ -12,6 +12,10 @@ if __name__ == '__main__':
 face_cascade = cv.CascadeClassifier('media/data/haarcascade_profileface.xml')
 
 print("press q to exit") #Refference to "#Display Frame" further down.
+
+old_x = [0]
+old_y = [0]
+
 
 while True:
     #Capture frame by frame
@@ -34,10 +38,13 @@ while True:
 #        print("detection at:", "x:",x,"y:",y)
 
     for (x,y,w,h) in face_size:
-        x_storage = [x]
-        y_storage = [y]
-        cv.line(frame,(x,y),(w,h),(0,255,0),2)
+        #old_y = next(a)
+        cv.line(frame,(old_x[0], old_y[0]),(x, y),(0,255,0),2)
         print("x:",x,"y:",y,"w:",w,"h:",h)
+        old_x.append(x)
+        old_y.append(y)
+        #next(old_x)
+
 
     #Display Frame
     cv.imshow('Face reconitization with Haar Cacades training set',frame) #Display
