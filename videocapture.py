@@ -30,11 +30,17 @@ while True:
 
     #Create rectangle around detected objects
     for (x,y,w,h) in face_size: #x-axis, y-axis, wight, height
-        cv.rectangle(frame,(x,y),(x+w,y+h),(0,0,255),2)
-        print("detection at:", "x:",x,"y:",y)
+        cv.rectangle(frame,(x,y),(x+w,y+h),(0,0,255),2) #print in red color
+#        print("detection at:", "x:",x,"y:",y)
+
+    for (x,y,w,h) in face_size:
+        x_storage = [x]
+        y_storage = [y]
+        cv.line(frame,(x,y),(w,h),(0,255,0),2)
+        print("x:",x,"y:",y,"w:",w,"h:",h)
 
     #Display Frame
-    cv.imshow('Face reconitization with Harr Cacades training set',frame) #Display
+    cv.imshow('Face reconitization with Haar Cacades training set',frame) #Display
     if cv.waitKey(1) & 0xFF == ord('q'): #close by keypress q
         break #exit loop
 
