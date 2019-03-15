@@ -39,12 +39,13 @@ while True:
 
     for (x,y,w,h) in face_size:
         #old_y = next(a)
-        cv.line(frame,(old_x[0], old_y[0]),(x, y),(0,255,0),2)
-        print("x:",x,"y:",y,"w:",w,"h:",h)
-        old_x.append(x)
-        old_y.append(y)
-        #next(old_x)
-
+        for i in old_x:
+            cv.line(frame,((old_x[i]), (old_y[i])),(x, y),(0,255,0),2)
+            print("x:",x,"y:",y,"w:",w,"h:",h)
+            old_x == old_x.append(x)
+            old_y == old_y.append(y)
+            #i =+ 1
+            break
 
     #Display Frame
     cv.imshow('Face reconitization with Haar Cacades training set',frame) #Display
