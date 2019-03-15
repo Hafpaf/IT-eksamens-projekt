@@ -2,6 +2,37 @@ import numpy as np
 import cv2 as cv
 print("CV2 version:", cv.__version__)
 
+class PowTwo:
+    """Class to implement an iterator
+    of powers of two"""
+
+    def __init__(self, max = 0):
+        self.max = max
+
+    def __iter__(self):
+        self.n = 0
+        return self
+
+    def __next__(self):
+        if tuple(self.n) <= tuple(self.max):
+            result = 2 ** self.n
+            self.n += 1
+            return result
+        else:
+            raise StopIteration
+
+'''class InfIter:
+    """Infinite iterator to return all numbers"""
+
+    def __iter__(self):
+        self.num = 1
+        return self
+
+    def __next__(self):
+        num = self.num
+        self.num += 1
+        return num'''
+
 if __name__ == '__main__':
     cap = cv.VideoCapture('media/david.webm') #select capture device, 0 is inbuild
     if not cap.isOpened():
@@ -37,14 +68,18 @@ while True:
         cv.rectangle(frame,(x,y),(x+w,y+h),(0,0,255),2) #print in red color
 #        print("detection at:", "x:",x,"y:",y)
 
-    for (x,y,w,h) in face_size:
-        #old_y = next(a)
+    for (x,y,w,h) in iter(PowTwo(face_size)):
         for i in old_x:
-            cv.line(frame,((old_x[i]), (old_y[i])),(x, y),(0,255,0),2)
+            x_iter = iter(old_x)
+            y_iter = iter(old_y)
+            ooh = 0
+            cv.line(frame,((old_x[ooh]), (old_y[ooh])),(x, y),(0,255,0),2)
             print("x:",x,"y:",y,"w:",w,"h:",h)
             old_x == old_x.append(x)
             old_y == old_y.append(y)
-            #i =+ 1
+            print(ooh)
+            ooh == ooh + 1
+            #next(old_x)
             break
 
     #Display Frame
