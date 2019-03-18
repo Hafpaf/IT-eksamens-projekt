@@ -70,19 +70,18 @@ while True:
         coordtext = (str(x) + 'x' + ',' + str(y) + 'y')
         cv.putText(frame,coordtext,(0,30),cv.FONT_HERSHEY_SIMPLEX,1,(255,255,255),2) #print text on vidoe
 
-    for (x,y,w,h) in iter(PowTwo(face_size)):
         for i in old_x:
-            x_iter = iter(old_x)
-            y_iter = iter(old_y)
-            ooh = 0
-            cv.line(frame,((old_x[ooh]), (old_y[ooh])),(x, y),(0,255,0),2)
+            #x_iter = iter(old_x)
+            #y_iter = iter(old_y)
+            cv.circle(frame,((x+w),(y+h)),(5),(0,255,0),2)
+            #cv.circle(frame,((old_x[i]), (old_y[i])),(x, y),(0,255,0),2)
             print("x:",x,"y:",y,"w:",w,"h:",h)
             old_x == old_x.append(x)
             old_y == old_y.append(y)
-            print(ooh)
-            ooh == ooh + 1
+            print(old_x[i])
             #next(old_x)
             break
+
 
     #Display Frame
     cv.imshow('Face reconitization with Haar Cacades training set',frame) #Display
