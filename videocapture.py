@@ -68,7 +68,7 @@ while True:
         cv.rectangle(frame,(x,y),(x+w,y+h),(0,0,255),2) #print in red color
 #        print("detection at:", "x:",x,"y:",y)
         coordtext = (str(x) + 'x' + ',' + str(y) + 'y')
-        cv.putText(frame,coordtext,(0,30),cv.FONT_HERSHEY_SIMPLEX,1,(255,255,255),2)
+        cv.putText(frame,coordtext,(0,30),cv.FONT_HERSHEY_SIMPLEX,1,(255,255,255),2) #print text on vidoe
 
     for (x,y,w,h) in iter(PowTwo(face_size)):
         for i in old_x:
