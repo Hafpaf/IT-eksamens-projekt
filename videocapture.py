@@ -65,7 +65,17 @@ while True:
 
     #Create rectangle around detected objects
     for (x,y,w,h) in face_size: #x-axis, y-axis, wight, height
-        cv.rectangle(frame,(x,y),(x+w,y+h),(0,0,255),2) #print in red color
+
+        # end coords are the end of the bounding box x & y
+        end_cord_x = x + w
+        end_cord_y = y + h
+        end_size = w*2
+
+        # these are our target coordinates
+        targ_cord_x = int((end_cord_x + x)/2)
+        targ_cord_y = int((end_cord_y + y)/2)
+
+        cv.rectangle(frame,(x,y),(end_cord_x,end_cord_y),(0,0,255),2) #print in red color
 #        print("detection at:", "x:",x,"y:",y)
         coordtext = (str(x) + 'x' + ',' + str(y) + 'y')
         cv.putText(frame,coordtext,(0,30),cv.FONT_HERSHEY_SIMPLEX,1,(255,255,255),2) #print text on vidoe
@@ -73,12 +83,15 @@ while True:
         for i in old_x:
             #x_iter = iter(old_x)
             #y_iter = iter(old_y)
-            cv.circle(frame,((x+w),(y+h)),(5),(0,255,0),2)
+
+            #cv.circle(frame,((x+w),(y+h)),(5),(0,255,0),2)
+            cv.circle(frame, (targ_cord_x, targ_cord_y), 5, (0,255,0), 2)
             #cv.circle(frame,((old_x[i]), (old_y[i])),(x, y),(0,255,0),2)
-            print("x:",x,"y:",y,"w:",w,"h:",h)
+            print("Circle center", targ_cord_x, targ_cord_y)
+            print("Box coords: ""x:",x,"y:",y,"w:",w,"h:",h)
             old_x == old_x.append(x)
             old_y == old_y.append(y)
-            print(old_x[i])
+            #print(old_x[i])
             #next(old_x)
             break
 
