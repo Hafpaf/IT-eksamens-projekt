@@ -47,7 +47,6 @@ print("press q to exit") #Refference to "#Display Frame" further down.
 old_x = [0]
 old_y = [0]
 
-
 while True:
     #Capture frame by frame
     ret, frame = cap.read() #ret: obtain value from source. Frame: get next frame
@@ -65,7 +64,7 @@ while True:
 
     #Create rectangle around detected objects
     for (x,y,w,h) in face_size: #x-axis, y-axis, wight, height
-
+        #iter_list = int(iter(x))
         # end coords are the end of the bounding box x & y
         end_cord_x = x + w
         end_cord_y = y + h
@@ -78,7 +77,7 @@ while True:
         cv.rectangle(frame,(x,y),(end_cord_x,end_cord_y),(0,0,255),2) #print in red color
 #        print("detection at:", "x:",x,"y:",y)
         coordtext = (str(x) + 'x' + ',' + str(y) + 'y')
-        cv.putText(frame,coordtext,(0,30),cv.FONT_HERSHEY_SIMPLEX,1,(255,255,255),2) #print text on vidoe
+        cv.putText(frame,coordtext,(0,30),cv.FONT_HERSHEY_SIMPLEX,1,(255,255,255),2) #print text on video
 
         for i in old_x:
             #x_iter = iter(old_x)
@@ -89,9 +88,9 @@ while True:
             #cv.circle(frame,((old_x[i]), (old_y[i])),(x, y),(0,255,0),2)
             print("Circle center", targ_cord_x, targ_cord_y)
             print("Box coords: ""x:",x,"y:",y,"w:",w,"h:",h)
-            old_x == old_x.append(x)
-            old_y == old_y.append(y)
-            #print(old_x[i])
+            #old_x == old_x.append(x)
+            #old_y == old_y.append(y)
+            #print(i, old_x[i+1])
             #next(old_x)
             break
 
