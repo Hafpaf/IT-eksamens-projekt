@@ -95,8 +95,8 @@ while True:
         #write detections to file
         '''
         #print(format_current)
-        with open('media/output/'+str(format_current)+'.txt', 'a') as f: #create file named after the current date and time
-            f.write(' '.join(('x: ',str(targ_cord_x),'y: ',str(targ_cord_y),'\n'))) #write to file
+        with open('media/output/' + str(format_current) + '.txt', 'a') as f: #create file named after the current date and time
+            f.write(' '.join((coordtext,'\n'))) #write to file
 
         for i in old_x:
             #x_iter = iter(old_x)
