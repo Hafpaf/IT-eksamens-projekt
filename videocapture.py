@@ -1,5 +1,6 @@
 import numpy as np
 import cv2 as cv
+from datetime import date, time, datetime
 '''
 TODO:
 Create iterator to track changes in captured frames
@@ -53,6 +54,10 @@ print("press q to exit") #Refference to "#Display Frame" further down.
 old_x = [0]
 old_y = [0]
 
+current_date_time = datetime.now() #fetch current time
+format = "%Y-%m-%d-%H:%M:%S" #specify formating of time and date
+format_current = current_date_time.strftime(format) #format time and date
+
 while True:
     #Capture frame by frame
     ret, frame = cap.read() #ret: obtain value from source. Frame: get next frame
@@ -84,6 +89,14 @@ while True:
 #        print("detection at:", "x:",x,"y:",y)
         coordtext = (str(x) + 'x' + ',' + str(y) + 'y')
         cv.putText(frame,coordtext,(0,30),cv.FONT_HERSHEY_SIMPLEX,1,(255,255,255),2) #print text on video
+
+        '''
+        ----------
+        #write detections to file
+        '''
+        #print(format_current)
+        with open('media/output/'+str(format_current)+'.txt', 'a') as f: #create file named after the current date and time
+            f.write(' '.join(('x: ',str(targ_cord_x),'y: ',str(targ_cord_y),'\n'))) #write to file
 
         for i in old_x:
             #x_iter = iter(old_x)
