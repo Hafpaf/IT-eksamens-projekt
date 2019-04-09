@@ -1,5 +1,11 @@
 import numpy as np
 import cv2 as cv
+'''
+TODO:
+Create iterator to track changes in captured frames
+transfer output to remote file system
+'''
+
 print("CV2 version:", cv.__version__)
 
 class PowTwo:
@@ -36,7 +42,7 @@ class PowTwo:
 if __name__ == '__main__':
     cap = cv.VideoCapture('media/david.webm') #select capture device, 0 is inbuild
     if not cap.isOpened():
-        print("Can't find capture devide")
+        print("Can't find capture device")
         exit(1) #Exit error code
 
 #Face detection training set
