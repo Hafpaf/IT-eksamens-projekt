@@ -2,12 +2,14 @@ import numpy as np
 import cv2 as cv
 from datetime import date, time, datetime
 '''
+----------
 TODO:
 Create iterator to track changes in captured frames
 transfer output to remote file system
+----------
 '''
 
-print("CV2 version:", cv.__version__)
+print("CV2 version:", cv.__version__) #Print OpenCV version
 
 class PowTwo:
     """Class to implement an iterator
@@ -40,6 +42,9 @@ class PowTwo:
         self.num += 1
         return num'''
 
+'''
+#Make sure the programs is run directly and not as library
+'''
 if __name__ == '__main__':
     cap = cv.VideoCapture('media/david.webm') #select capture device, 0 is inbuild
     if not cap.isOpened():
@@ -51,6 +56,7 @@ face_cascade = cv.CascadeClassifier('media/data/haarcascade_profileface.xml')
 
 print("press q to exit") #Refference to "#Display Frame" further down.
 
+#Used for iterator
 old_x = [0]
 old_y = [0]
 
@@ -67,12 +73,13 @@ while True:
     #Frame proccessing
     gray_color = cv.cvtColor(frame, cv.COLOR_BGR2GRAY) #BGR color scheme to GRAY color scheme
 
-    ''' Optimization of image proccessing
-    mini = cv.resize(frame, (frame.shape[1] // dst.size(), frame.shape[0] // dst.size()))
-    '''
     #Detect objects of different sizes
     face_size = face_cascade.detectMultiScale(gray_color, 1.1, 1)
 
+    '''
+    ----------
+    Convert detections to coordinates
+    '''
     #Create rectangle around detected objects
     for (x,y,w,h) in face_size: #x-axis, y-axis, wight, height
         #iter_list = int(iter(x))
@@ -81,12 +88,16 @@ while True:
         end_cord_y = y + h
         end_size = w*2
 
-        # these are our target coordinates
+        '''
+        ----------
+        #Write red square around detected face
+        '''
+        #Target coordinates
         targ_cord_x = int((end_cord_x + x)/2)
         targ_cord_y = int((end_cord_y + y)/2)
 
         cv.rectangle(frame,(x,y),(end_cord_x,end_cord_y),(0,0,255),2) #print in red color
-#        print("detection at:", "x:",x,"y:",y)
+        #print("detection at:", "x:",x,"y:",y) #Remain commented, use for tests
         coordtext = (str(x) + 'x' + ',' + str(y) + 'y')
         cv.putText(frame,coordtext,(0,30),cv.FONT_HERSHEY_SIMPLEX,1,(255,255,255),2) #print text on video
 
@@ -98,6 +109,10 @@ while True:
         with open('media/output/' + str(format_current) + '.txt', 'a') as f: #create file named after the current date and time
             f.write(' '.join((coordtext,'\n'))) #write to file
 
+        '''
+        ----------
+        #Write a circle unto the middle of detected faces
+        '''
         for i in old_x:
             #x_iter = iter(old_x)
             #y_iter = iter(old_y)
@@ -113,11 +128,14 @@ while True:
             #next(old_x)
             break
 
-
+    '''
+    ----------
     #Display Frame
-    cv.imshow('Face reconitization with Haar Cacades training set',frame) #Display
+    '''
+    cv.imshow('Face reconitization with Haar Cacades training set',frame) #Display window with stated title
     if cv.waitKey(1) & 0xFF == ord('q'): #close by keypress q
         break #exit loop
 
+#Kill process
 cap.release() #release capture device
 cv.destroyAllWindows() #Kill window
