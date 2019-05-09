@@ -1,5 +1,6 @@
 import numpy as np
 import cv2 as cv
+print("CV2 version:", cv.__version__)
 
 img1 = cv.imread('media/king_dedede.jpg') #read picture in BGR
 
