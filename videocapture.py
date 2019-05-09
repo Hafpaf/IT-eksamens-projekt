@@ -47,7 +47,7 @@ class PowTwo:
 '''
 if __name__ == '__main__':
     #test video: 'media/david.webm'
-    cap = cv.VideoCapture(0) #select capture device, 0 is inbuild
+    cap = cv.VideoCapture('media/david.webm') #select capture device, 0 is inbuild
     if not cap.isOpened():
         print("Can't find capture device")
         exit(1) #Exit error code
@@ -107,8 +107,11 @@ while True:
         #write detections to file
         '''
         #print(format_current)
+        current_date_time = datetime.now() #fetch current time
+        format = "%Y-%m-%d-%H:%M:%S" #specify formating of time and date
+        format_current_text = current_date_time.strftime(format) #format time and date
         with open('media/output/' + str(format_current) + '.txt', 'a') as f: #create file named after the current date and time
-            f.write(' '.join((coordtext,'\n'))) #write to file
+            f.write(' '.join((format_current_text + ': ' + coordtext,'\n'))) #write to file
 
         '''
         ----------
