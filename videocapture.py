@@ -11,37 +11,6 @@ transfer output to remote file system
 
 print("CV2 version:", cv.__version__) #Print OpenCV version
 
-class PowTwo:
-    """Class to implement an iterator
-    of powers of two"""
-
-    def __init__(self, max = 0):
-        self.max = max
-
-    def __iter__(self):
-        self.n = 0
-        return self
-
-    def __next__(self):
-        if tuple(self.n) <= tuple(self.max):
-            result = 2 ** self.n
-            self.n += 1
-            return result
-        else:
-            raise StopIteration
-
-'''class InfIter:
-    """Infinite iterator to return all numbers"""
-
-    def __iter__(self):
-        self.num = 1
-        return self
-
-    def __next__(self):
-        num = self.num
-        self.num += 1
-        return num'''
-
 '''
 #Make sure the programs is run directly and not as library
 '''
