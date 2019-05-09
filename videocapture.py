@@ -46,7 +46,8 @@ class PowTwo:
 #Make sure the programs is run directly and not as library
 '''
 if __name__ == '__main__':
-    cap = cv.VideoCapture('media/david.webm') #select capture device, 0 is inbuild
+    #test video: 'media/david.webm'
+    cap = cv.VideoCapture(0) #select capture device, 0 is inbuild
     if not cap.isOpened():
         print("Can't find capture device")
         exit(1) #Exit error code
