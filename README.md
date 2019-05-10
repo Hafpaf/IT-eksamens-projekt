@@ -1,6 +1,6 @@
 # IT B eksamensprojekt
 
-Virtual environment requries pip and virtualvenv
+Virtual environment requires pip and virtualvenv
 
 Run environment:
 ```bash
