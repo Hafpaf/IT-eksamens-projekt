@@ -1,14 +1,37 @@
-# IT B eksamensprojekt
+# Face detection using OpenCV and precompiled dataset
 
-Virtual environment requires pip and virtualvenv
+# Requirements
+- Webcam or a videofeed (testvideo included in repo)
+- Python3
+- OpenCV (developed using v4.0.0)
+- pip
+- virtualenv
 
-Run environment:
+
+## Setup virtual environment
+Use your prefered virtual environment, this will set it up with virtualvenv and pip.
+
+Install **pip** and **virtualvenv** for Arch Linux:
 ```bash
-python3 -m venv /path
+sudo pacman -S python-pip python-virtualenv
+```
+
+Initialize environment:
+```bash
+python3 -m venv /path-to-directory
+```
+
+Change directory into environment and activate it
+```bash
+cd /path-to-directory
 source bin/activate
 pip install -r requirements.txt
 ```
 
+Exit virtualvenv
+```bash
+deactivate
+```
 
 ## Ressouces
 * Test video [david.webm](../media/david.webm) can be found [here](https://github.com/opencv/opencv_extra/blob/master/testdata/cv/tracking/david/data/david.webm)
@@ -24,3 +47,4 @@ pip install -r requirements.txt
 ## What I learned
 
 * Its pretty easy to create a face reconition software. I found a pre-made public dataset which made it quite easy to set the whole thing up.
+* The better quality the dataset is, the better recognition the program will have
