@@ -1,6 +1,7 @@
 import numpy as np
 import cv2 as cv
 from datetime import date, time, datetime
+#import picamera
 '''
 ----------
 TODO:
@@ -16,6 +17,7 @@ print("CV2 version:", cv.__version__) #Print OpenCV version
 '''
 if __name__ == '__main__':
     #test video: 'media/david.webm'
+    #Pi capture: picamera.capture()
     cap = cv.VideoCapture('media/david.webm') #select capture device, 0 is inbuild
     if not cap.isOpened():
         print("Can't find capture device")
