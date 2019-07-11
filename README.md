@@ -34,7 +34,7 @@ deactivate
 ```
 
 ## Ressouces
-* Test video [david.webm](../media/david.webm) can be found [here](https://github.com/opencv/opencv_extra/blob/master/testdata/cv/tracking/david/data/david.webm)
+* Test video [david.webm](media/david.webm) can be found [here](https://github.com/opencv/opencv_extra/blob/master/testdata/cv/tracking/david/data/david.webm)
 
 * Cascades training data used: [haarcascade_profileface.xml from OpenCV](https://github.com/opencv/opencv/blob/master/data/haarcascades/haarcascade_profileface.xml)
 
