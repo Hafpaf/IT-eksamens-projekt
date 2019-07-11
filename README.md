@@ -1,6 +1,8 @@
 # IT B eksamensprojekt
 
-commands:
+Virtual environment requires pip and virtualvenv
+
+Run environment:
 ```bash
 python3 -m venv /path
 source bin/activate
